@@ -1,0 +1,12 @@
+// key value 형태로 코드를 작성해주면 된다.
+// 컴파일 할 때 부가적인 옵션들을 작성해준다.
+// 옵션중에 allowJs와 같이 사용 하는 것이 checkJs다.
+
+{
+  "compilerOptions": {
+    //부가적인 옵션들이다 👇🏻
+    "allowJs": true, // 이 프로젝트 안에 자바스크립트를 허용하겠다.
+    "checkJs": true, //@ts-check 자바스크립트에서 타입스크립트의 기능들 활용하겠다는 옵션이다.
+    "noImplicitAny": true // 모든 타입에 대해서 최소 any라고 하는 기본적인 타입이라도 넣어야되는 것을 noImplicitAny라고 한다.
+  }
+}
