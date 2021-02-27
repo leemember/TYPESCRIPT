@@ -39,7 +39,6 @@ sum = function(a: number, b: number) : number {
 }
 
 //🌟 인덱싱
-
 interface StringArray {
   [index: number] : string;
   //index는 숫자를 받고, 반환되는 값은 문자열로
@@ -87,9 +86,9 @@ interface Developer extends Person {
 /*
   name: string;
   age: number;
-이 속성들은 굳이 입력하지 않아도 된다.
-왜냐면 extends Person 이렇게 확장해서
-Person에 대한 속성들을 다 가지고 왔다.
+  이 속성들은 굳이 입력하지 않아도 된다.
+  왜냐면 extends Person 이렇게 확장해서
+  Person에 대한 속성들을 다 가지고 왔다.
 */
 
 var captain : Developer = {

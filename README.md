@@ -279,3 +279,69 @@ log('hello ts', 'abc');
 <br>
 
 ## 💜 인터페이스란?
+
+```
+interface User {
+  age: number;
+  name: string;
+  }
+
+var seho: User = {
+  age: 33,
+  name: '세호'
+}
+
+function getUser(user : User) {
+console.log(user);
+}
+
+```
+> 중복된 코드들을 제거하기 위해 User라는 interface 만들어서 속성들을 넣어주고, 변수에 인터페이스를 활용한 다음 새로운 함수를 만들 때, 인터페이스를 넣는다.
+그리고 변수를 만들 때는 인터페이스의 age, name을 타입 적용시켜 사용해줘야한다.
+
+### 인덱싱 인터페이스
+
+```
+interface StringArray {
+  [index: number] : string;
+  //index는 숫자를 받고, 반환되는 값은 문자열로
+}
+
+var arr : StringArray = ['a','b','c','d'];
+```
+
+> index는 숫자를 받기 때문에 number로 지정하고, 반환되는 값은 문자열로 string 뽑아내준다.그리고 arr라는 변수를 만들 때 이미 만들어진 StringArray 인터페이스 속성 규칙대로 배열 값들은 string으로 입력해준다.
+
+### 딕셔너리 패턴
+
+```
+interface StringRegexDictionary {
+  [key:string] : RegExp;
+}
+
+var obj : StringRegexDictionary = {
+  cssFile : /\.css$/,
+  jsFile : /\.js$/
+}
+
+
+Object.keys(obj).forEach(function(value) {})
+```
+>StringRegexDictionary 인터페이스에 왼쪽에 있는 key값은 string으로 오른쪽은 RegExp라는 정규표현식으로 지정했기 때문에 obj라는 변수에 StringRegexDictionary를 불러왔으니 똑같이 왼쪽에는 string방식으로 오른쪽에는 정규표현식을 사용해줘야한다.
+그리고 마지막에 Object로 시작하는 문장의 코드는 keys에 obj라는 key들만 배열로 만든다음에 forEach 돌려준다는 것이고 function 함수 파라미터 안에 들어있는 value는 string를 의미
+
+### 인터페이스 확장
+
+```
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface Developer extends Person {
+  language: string;
+}
+```
+> Person이라는 인터페이스 안에 속성들을 정의해두고 이걸 확장해서 코드 수를 줄이는 방법이다.
+먼저 Person 인터페이스를 정의해 뒀으니 Developer라는 인터페이스에 Person를 extends를 써서 확장 시켰기 때문에, name과 age이란 속성은 알아서 가지고 가게 된다. 그리고 Developer라는 인터페이스에는 새로운 속성인 language만 추가시켜서 선언해줌
+
