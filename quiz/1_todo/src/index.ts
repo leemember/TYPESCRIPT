@@ -1,5 +1,12 @@
 //🌟타입함수를 정의할 때 중복되는 코드들을 제거하기 위해서 '타입별칭'을 선언해주는 방법이 있다
-type Todo = {
+// type Todo = {
+//   id: number;
+//   title: string;
+//   done: boolean;
+// };
+
+// 타입스크립트의 가장 핵심인 인터페이스에 대해 알아보자.
+interface Todo {
   id: number;
   title: string;
   done: boolean;
@@ -12,9 +19,10 @@ let todoItems: Todo[];
 //그래야 에러가 안생긴다.
 
 // api
-function fetchTodoItems():{ id: number; title: string; done: boolean; }[] {
+function fetchTodoItems():Todo[] {
   //{ id: number; title: string; done: boolean; }이렇게 생긴 배열의 반환값을 원한다.
   //구체적으로 나타내주는 것이 타입스크립트의 킬포임 🌟 
+  //하지만 이걸 타입스크립트 핵심인 인터페이스를 통해 Todo로 나타내어 코드를 최소화시켰다.
   const todos = [
     { id: 1, title: '안녕', done: false }, //이것들이 다 object다
     { id: 2, title: '타입', done: false },
@@ -30,7 +38,7 @@ function fetchTodos(): object[] {
 } // 리턴했을 때  object[] 를 반환하다.
 
 //할 일 추가하기
-function addTodo(todo: { id: number; title: string; done: boolean; }): void {
+function addTodo(todo: Todo): void {
   //이렇게 구체적으로 타입을 정의해주어야 todo에 대한 에러가 안생긴다.
   todoItems.push(todo);
 } //함수의 반환값(return)이 없을 때 void를 해줘야한다.
@@ -44,7 +52,7 @@ function deleteTodo(index : number):void {
 //할 일 완료하기
 function completeTodo(
   index:number,
-  todo: { id: number; title: string; done: boolean; }
+  todo: Todo
 ):void {
   todo.done = true; //done의 타입은 boolean으로 나타냈기 때문에 꼭 true/false로 나타내줘야한다.
   todoItems.splice(index, 1, todo);
