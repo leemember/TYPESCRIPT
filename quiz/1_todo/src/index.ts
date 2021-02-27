@@ -1,9 +1,13 @@
-let todoItems: object[];
+let todoItems: { id: number; title: string; done: boolean; }[];
 //할일 목록을 받는 배열의 성격을 가지고 있다.
 //객체object 배열로 선언해주었다.
+//todos 함수에 담긴 객체 배열들의 타입들을 미리미리 지정해두어야 한다.
+//그래야 에러가 안생긴다.
 
 // api
-function fetchTodoItems():object[] {
+function fetchTodoItems():{ id: number; title: string; done: boolean; }[] {
+  //{ id: number; title: string; done: boolean; }이렇게 생긴 배열의 반환값을 원한다.
+  //구체적으로 나타내주는 것이 타입스크립트의 킬포임 🌟 
   const todos = [
     { id: 1, title: '안녕', done: false }, //이것들이 다 object다
     { id: 2, title: '타입', done: false },
@@ -19,7 +23,8 @@ function fetchTodos(): object[] {
 } // 리턴했을 때  object[] 를 반환하다.
 
 //할 일 추가하기
-function addTodo(todo: object): void {
+function addTodo(todo: { id: number; title: string; done: boolean; }): void {
+  //이렇게 구체적으로 타입을 정의해주어야 todo에 대한 에러가 안생긴다.
   todoItems.push(todo);
 } //함수의 반환값(return)이 없을 때 void를 해줘야한다.
 
@@ -30,8 +35,11 @@ function deleteTodo(index : number):void {
 // 그리고 이것 또한 반환값이 없으므로 void를 선언해준다.
 
 //할 일 완료하기
-function completeTodo(index:number, todo:object):void {
-  todo.done = true;
+function completeTodo(
+  index:number,
+  todo: { id: number; title: string; done: boolean; }
+):void {
+  todo.done = true; //done의 타입은 boolean으로 나타냈기 때문에 꼭 true/false로 나타내줘야한다.
   todoItems.splice(index, 1, todo);
 }
 
