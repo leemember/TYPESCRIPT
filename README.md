@@ -442,3 +442,27 @@ askSomeone1({ name: '디벨로퍼', skill: '웹 개발', age: 34});
 ### 👉🏻 [ENUM 자세히 보기](./class-note/6_enum.ts)
 
 <br>
+
+## 💜 제네릭
+
+<br>
+
+> 제네릭은 C#, JAVA등의 언어에서 <B> 재사용성이 높은 컴포넌트를 만들 때</B> 자주 활용되는 특징입니다. 특히, 한가지 타입보다 여러 가지 타입에서 동작하는 컴포넌트를 생성하는데 사용됩니다.
+
+### 제네릭의 기본 문법
+
+```
+function logText<T>(text: T): T{
+  console.log(text);
+  return text;
+}
+logText<string>('하이');
+```
+
+반환해주는 값을 '하이'라고 <string>문자열로 지정했으면, logText에서 받은 값과 반환되는 값 모두 문자열로 지정해준다.
+
+```
+function logText 👉🏻 <T>(text: T): T{
+```
+
+이것이 그걸 의미해준다 .
