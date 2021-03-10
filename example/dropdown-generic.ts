@@ -1,3 +1,10 @@
+//이전에 긴 코드의 타입선언들을 인터페이스에 담아놓기
+interface Email {
+  value: string;
+  selected: boolean;
+}
+
+
 //이 처럼 함수를 선언해줄때 타입을 정확하게 구체적으로 입력해주었다.
 // value = 문자열 , selected = 논리형태
 //그리고 배열 함수니까
@@ -10,7 +17,12 @@ const emails: {value: string; selected: boolean}[] = [
   {value: 'hanmail.net', selected: false},
 ];
 
-const numberOfProucts:{value:number; selected: boolean}[] = [
+interface ProductNumber {
+  value: number;
+  selected: boolean;
+}
+
+const numberOfProucts:ProductNumber[] = [
   {value: 1, selected: true},
   {value: 2, selected: false},
   {value: 3, selected: false},
@@ -18,7 +30,12 @@ const numberOfProucts:{value:number; selected: boolean}[] = [
 
 //이 함수에 배열의 값들을 넘겨받는다.
 //이 함수 괄호에 있는 item은 옵션을 뜻한다.
-function createDropdownItem(item: {value: string; selected: boolean}) {
+function createDropdownItem(
+  item: 
+  | {value: number; selected: boolean} // item에는 얘도 받을 수 있고
+  | {value: string; selected: boolean} // 얘도 받을 수 있다.
+  // 이 2개 다 수용할 수 있다. 이것을 유니온타입이라고 한다.
+) {
   const option = document.createElement('option');
   option.value = item.value.toString();
   option.innerText = item.value.toString();
@@ -26,8 +43,10 @@ function createDropdownItem(item: {value: string; selected: boolean}) {
 }
 
 // NOTE: 이메일 드롭 다운 아이템 추가
+// forEach : 반복문을 돌려준다.
 emails.forEach(function(email) {
   const item = createDropdownItem(email);
+  // createDropdownItem는 value : number
   const selectTag = document.querySelector('#email-dropdown');
   selectTag.appendChild(item);
 })
