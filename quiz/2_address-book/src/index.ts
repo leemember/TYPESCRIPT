@@ -124,8 +124,20 @@ class AddressBook {
   displayListByAddress():string[] {
     return this.contacts.map(contact => contact.address);
   }
-  /* ------------------------------------------------ */
 }
+/* ------------------------------------------------ */
+
+// var div =document.querySelector('div');
+// div.innerText;
+//단순히 위처럼만 코드를 짜게되면 div가 null인지 html엘리먼트인지 모르니까 if문을 이용해 null값이 아니라는 것을 보장을 해주어야 한다.
+
+
+var div =document.querySelector('div') as HTMLDivElement;
+if(div) {
+  div.innerText;
+}
+
+/* ------------------------------------------------ */
 
 //heroes에 name과 age객체가 담긴 배열을 생성시켰다.
 let heroes = [
