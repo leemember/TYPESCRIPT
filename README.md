@@ -499,4 +499,64 @@ const obj: Dropdown<string> = {value: '123', selected: false };
 
 > 인터페이스 제너릭을 이용하여 코드를 최적화 시켜보았다. 원래는 인터페이스 선언할 때 기본 value값을 타입으로 정의해줘야 했다면 제너릭을 이용하면 const 함수 선언할 때와 동시에 타입을 정의해주면 된다. 이처럼 타입스크립트의 제너릭은 편리하고 코드도 최적화 시킬 수 있어서 큰 장점이다.
 
+### 👩🏻‍🦳 제네릭의 타입 제한(2) - 정의된 타입 이용하기
+
+[방법01]
+
+```
+function logTextLength<T>(text:T[]):T[] {
+  console.log(text.length);
+  text.forEach(function (text) {
+    console.log(text);
+  })
+  return text;
+}
+logTextLength<string>(['hi', 'abc']);
+```
+
+> 콘솔로그 파라미터에 text.length를 선언했는데, length인지를 제대로 알게 해주려면 T제너릭 타입에 힌트를 줘야한다. 힌트는 T뒤에 [] 배열 표시를 넣어주면된다. 그리고 함수를 넘길 때도 배열형식으로 넘겨주어야한다.
+
+[방법02]
+
+```
+interface LengthType {
+  length: number;
+}
+
+function logTextLength01<T extends LengthType>(text:T):T {
+  text.length;
+  return text;
+}
+logTextLength([1,2,3,4,5]);
+```
+
+> [] 배열 기호를 안써주고 length타입이 선언됐다는 것을 표시하려면 제너릭을 선언할 때 extends 키워드를 사용하고 LengthType를 선언해도 된다.
+> 그럼 더 구체적으로 length를 사용하는구나 라고 알 수 있다.
+
+### 👩🏻‍🦳 제네릭의 타입 제한(3) - keyof
+
+```
+interface ShoppingItem {
+name: string;
+price: number;
+stock: number;
+}
+
+function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption:T):T {
+return itemOption;
+}
+getShoppingItemOption('name');
+```
+
+🤍 선언된 인터페이스의 속성 중 하나만 받겠다로 밑에 함수를 제약할 수 있다.
+
+### _사용방법_
+
+1. ShoppingItem 인터페이스를 선언하고, 그 안에 속성들을 정의해준다.
+2. getShoppingItemOption 함수를 만들면서 제너릭을 선언해준다.
+3. 제너릭 선언 시 extends 확장 키워드를 사용하고, keyof라는 예약어로
+4. ShoppingItem 인터페이스를 불러온다.
+5. 그리고 파라미터 값에는 itemOption만 넣어준다.
+6. 마지막, getShoppingItemOption 함수를 불러내고 [컨트롤+스페이스] 누르면 인터페이스 안에 담긴 속성들을 불러와줄 수 있다.
+
 ### 👉🏻 [제네릭 자세히 보기](./class-note/8_generics.ts)
