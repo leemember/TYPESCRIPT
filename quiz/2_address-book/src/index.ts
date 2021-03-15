@@ -1,20 +1,4 @@
-interface PhoneNumberDictionary {
-  [phone: string]: {
-    num: number;
-  };
-}
-
-interface Contact {
-  name: string;
-  address: string;
-  phones: PhoneNumberDictionary;
-}
-
-enum PhoneType {
-  Home = 'home',
-  Office = 'office',
-  Studio = 'studio',
-}
+import {Contact, PhoneType} from './types'
 
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
@@ -132,10 +116,8 @@ class AddressBook {
 //단순히 위처럼만 코드를 짜게되면 div가 null인지 html엘리먼트인지 모르니까 if문을 이용해 null값이 아니라는 것을 보장을 해주어야 한다.
 
 
-var div =document.querySelector('div') as HTMLDivElement;
-if(div) {
-  div.innerText;
-}
+var div = document.querySelector('div') as HTMLDivElement;
+div.innerText;
 
 /* ------------------------------------------------ */
 
