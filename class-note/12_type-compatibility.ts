@@ -12,15 +12,7 @@ var developer: Developer;
 var person : Person;
 // developer = person; 이렇게 되면 에러가난다.
 person = developer;
-//에러가 나는 이유는 왼쪽에 있는 객체가 더 많은 
-/*
-person은 속성이 name밖에 없다. 그 반면에 developer는 name과 skill이라는 속성이 총 2개나 있다. 이렇게 되었을때 오른쪽에 있는 타입이 왼쪽으로 할당이 될 수가 없다.
-더 객체가 많은 속성들, 구조적으로 더 큰 관계를 갖고 있기 때문에 이런 부분 들 때문에 타입 호환에 대해서 알고있으면 좋다.
 
-오른쪽에 있는 타입이 더 많은 속성을 가지고 있거나 더 큰 관계를 갖고 있을때에 왼쪽과 호환이 된다. 
-*/
-
-// 타입호환 : 구조적으로 더 큰 타입에서는 작은 타입을 지원 할 수 없다.
 class Person {
   name: string;
   skill: string;
@@ -38,7 +30,7 @@ var sum = function(a: number, b: number) {
 // sum이라는 함수 자체가 add라는 함수보다 더 크다. 
 // 크다라는 의미는 추가적으로 옵션들을 더 제공한다.
 
-sum = add;
+add = sum;
 // 얘는 호환이 가능하다. 타입이 더 커서
 
 // 제네릭
