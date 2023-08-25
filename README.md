@@ -34,6 +34,12 @@
 
 ## 💙 TypeScript 심화
 
+### 외부 라이브러리 모듈화
+- Definitely Typed 소개
+- Chart.js 라이브러리 임포트 문법 오류 해결
+
+### Axios response의 API 응답 타입 지정하기
+
 <br>
 
 ## 📃 목차
