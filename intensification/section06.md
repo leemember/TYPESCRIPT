@@ -1,6 +1,6 @@
 ## 외부 라이브러리 모듈화
 
-- axios, chart.js 등의 라이브러리는 어떻게 다루면 좋을까?
+### 🧸 axios, chart.js 등의 라이브러리는 어떻게 다루면 좋을까?
 
 `src/app.ts` 파일을 생성하여, 라이브러리르 설치하여 import로 불러온다.
 
@@ -65,7 +65,7 @@ import * as Chart from 'chart.js'
 그리고 해당 라이브러이명인 chart.js를 생성해줌. `types/chart.js/index.d.ts` 여기서 `index.d.ts`는 타입에 정의를 해주는 공간이라고 보면된다.
 
 
-- 작업공간repo/types/chart.js
+- 작업공간 경로 [프로젝트명]/types/chart.js
 
 ```typescript
 declare module 'chart.js';
