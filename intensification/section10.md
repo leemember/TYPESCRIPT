@@ -15,4 +15,4 @@ strict와 관련있는 속성들이 모두 true가 된다.
 
 ### null 타입 오류 및 함수 타입 오류 해결
 
-오류 문구 : `Object is possibly 'null'` 
+오류 문구 : `Object is possibly 'null'` 라고 뜬다
